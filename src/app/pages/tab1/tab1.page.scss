@@ -1,0 +1,42 @@
+
+.events-slider {
+
+    img{
+        width: fit-content;
+        height: 100%;
+    }
+
+    ion-label{
+        width: 100px;
+    }
+}
+
+.categories-slider {
+    ion-slide {
+        width: 100px;
+        height: auto;
+        ion-col {
+            ion-icon {
+                font-size: 25px;
+                object-fit: cover;
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+
+            ion-label {
+                text-align: center;
+                font-size: small;
+            }
+        }
+    }
+}
+
+.list{
+    border-width: 1px;
+    border-style: outset;
+    
+    img{
+        height: 50%;
+        width: auto;
+    }
+}

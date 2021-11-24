@@ -1,0 +1,16 @@
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      Seleccione el tipo de usuario
+    </ion-list-header>
+
+    <ion-item *ngFor="let user of tiposdeusuarios">
+      <ion-icon slot="start" name="beer"></ion-icon>
+      <ion-label>
+        <h2>{{user.nombre}}</h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+    
+</ion-content>

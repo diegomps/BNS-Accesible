@@ -1,0 +1,56 @@
+<ion-content [fullscreen]="true">
+
+  <!-- CARROUSEL DE EVENTOS -->
+  <div class="events-slider">
+    <ion-slides [options]="slideOptsEvents" effect="fade">
+      <ion-slide *ngFor="let evento of eventos; let posicion = index">
+
+        <ion-grid class="ion-no-padding">
+          <ion-row>
+            <ion-col>
+              <img src='{{evento.imgUrl}}'>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-item lines="none">
+                <ion-label>{{evento.nombre}}</ion-label>
+                <ion-button fill="outline" slot="end" (click)="mostrarEvento(evento.id, posicion)">Ver</ion-button>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <div class="ion-padding">
+    <h5>Navegar por las categorías</h5>
+  </div>
+
+  <!-- CARROUSEL DE CATEGORIAS -->
+  <div class="categories-slider ion-padding-start">
+    <ion-slides [options]="slideOptsCategories">
+      <ion-slide *ngFor="let categoria of categorias">
+        
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-icon name="{{categoria.icono}}"></ion-icon>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-label>{{categoria.nombre}}</ion-label>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+      </ion-slide>
+    </ion-slides>
+  </div>
+  
+</ion-content>
