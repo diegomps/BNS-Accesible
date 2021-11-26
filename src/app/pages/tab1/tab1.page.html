@@ -53,14 +53,41 @@
     </ion-slides>
   </div>
 
-  <ion-grid fixed>
+<ion-grid style="overflow: hidden; position: fixed; width: 100%;" *ngIf="alojamientos.length == 0">
+  <ion-row>
+    <ion-col size="6" *ngFor="let item of [0,1,2,3,4,5,6,7,8,9]">
+      <ion-skeleton-text animated style="width: 100%; height: 200px;"></ion-skeleton-text>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-grid>
+  <ion-row>
+    <ion-col size="6" *ngFor="let alojamiento of alojamientos" class="alojamiento">
+    <ion-img src="{{alojamiento.logo}}"></ion-img>
+    <ion-item>
+      <ion-label>
+        <ion-item lines="none">
+          <ion-icon slot="end" src={{alojamiento.da}}></ion-icon>
+          <ion-icon slot="end" src={{alojamiento.df}}></ion-icon>
+          <ion-icon slot="end" src={{alojamiento.dv}}></ion-icon>
+        </ion-item>
+        <h2>{{alojamiento.nombre}}</h2>
+        <p>{{alojamiento.direccion}}</p>
+        <ion-note>{{alojamiento.telefono}}</ion-note>
+      </ion-label>
+    </ion-item>
+    </ion-col>
+  </ion-row>
+</ion-grid> 
+
+  <!-- <ion-grid fixed>
     <ion-row>
       <ion-col size="6" size-lg="3" size-md="4" size-sm="6"
                *ngFor="let alojamiento of alojamientos">
         <ion-card>
           <ion-img src="{{alojamiento.logo}}"></ion-img>
         </ion-card>
-
         <ion-card-header>
           <ion-item lines="none">
             <ion-icon slot="end" src={{alojamiento.da}}></ion-icon>
@@ -69,27 +96,9 @@
           </ion-item>
           <ion-card-title>{{alojamiento.nombre}}</ion-card-title>
         </ion-card-header>
-
-        <ion-card-content>
-        </ion-card-content>
-
-
       </ion-col>
     </ion-row>
-  </ion-grid>
+  </ion-grid> -->
 
-  <!-- <div class="list">
-    <ion-grid class="ion-padding">
-      <ion-row *ngFor="let alojamiento of alojamientos">
-        <ion-col size="6" >
-          <img src="{{alojamiento.logo}}">
-          <label>{{alojamiento.nombre}}</label>
-          <ion-icon slot="end" src="{{alojamiento.da}}"></ion-icon>
-          <ion-icon slot="end" src={{alojamiento.df}}></ion-icon>
-          <ion-icon slot="end" src={{alojamiento.dv}}></ion-icon>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div> -->
 
 </ion-content>
