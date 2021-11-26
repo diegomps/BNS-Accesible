@@ -15,7 +15,6 @@ export class Tab2Page implements OnInit{
 
   ngOnInit(){
     this.getTiposDeUsuarios();
-    console.log(this.tiposdeusuarios)
   }
 
   getTiposDeUsuarios(){
@@ -27,6 +26,6 @@ export class Tab2Page implements OnInit{
       })
     })
    }
-
+   
 }
 

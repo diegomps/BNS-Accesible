@@ -85,11 +85,19 @@ export class Tab1Page implements OnInit{
     this.db.collection('Alojamientos').get().subscribe((resultado)=>{
  
       resultado.docs.forEach((item)=>{
-          this.alojamientos.push(item.data());
+        let alojamiento: any = item.data();
+        if (alojamiento.discapacidadAuditiva==true){
+          alojamiento.da = "/assets/icon/da.svg"
+        }
+        if (alojamiento.discapacidadFisica==true){
+          alojamiento.df = "/assets/icon/df.svg"
+        }
+        if (alojamiento.discapacidadAuditiva==true){
+          alojamiento.dv = "/assets/icon/dv.svg"
+        }
+          this.alojamientos.push(alojamiento);
       })
     })
    }
-
-
 
 }
