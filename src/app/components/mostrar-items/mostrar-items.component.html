@@ -1,0 +1,61 @@
+<!-- SKELETON CARGANDO -->
+<ion-grid style="overflow: hidden; position: fixed; width: 100%;" *ngIf="alojamientos.length == 0">
+  <ion-row>
+    <ion-col size="6" *ngFor="let item of [0,1,2,3,4,5,6,7,8,9]">
+      <ion-skeleton-text animated style="width: 100%; height: 200px;"></ion-skeleton-text>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<!-- CARROUSEL DE CATEGORIAS -->
+<ion-segment (ionChange)="segmentChanged($event)" scrollable mode="md" [value]="categoriaSeleccionada">
+  <div *ngFor="let categoria of categorias">
+    <ion-segment-button value="{{categoria.nombre}}">
+      <ion-icon name="{{categoria.icono}}"></ion-icon>
+      <hr>
+      <ion-label>{{categoria.nombre}}</ion-label>
+    </ion-segment-button>
+  </div>
+</ion-segment>
+
+<!-- MOSTRAR ITEMS -->
+<ion-grid *ngIf=" categoriaSeleccionada == 'Alojamientos' " class="categories">
+  <ion-row>
+    <ion-col size="6" size-lg="3" *ngFor="let alojamiento of alojamientos">
+    <ion-img src="{{alojamiento.logo}}"></ion-img>
+    <ion-item lines="none">
+      <ion-label>
+        <ion-item lines="none">
+          <ion-icon slot="end" src={{alojamiento.da}}></ion-icon>
+          <ion-icon slot="end" src={{alojamiento.df}}></ion-icon>
+          <ion-icon slot="end" src={{alojamiento.dv}}></ion-icon>
+        </ion-item>
+        <h2>{{alojamiento.nombre}}</h2>
+        <p>{{alojamiento.direccion}}</p>
+        <ion-note>{{alojamiento.telefono}}</ion-note>
+      </ion-label>
+    </ion-item>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-grid *ngIf=" categoriaSeleccionada == 'Atractivos' ">
+  <ion-row>
+    <ion-col size="6" size-lg="3" *ngFor="let atractivo of atractivos" class="categories">
+    <ion-img src="{{atractivo.logo}}"></ion-img>
+    <ion-item>
+      <ion-label>
+        <ion-item lines="none">
+          <ion-icon slot="end" src={{atractivo.da}}></ion-icon>
+          <ion-icon slot="end" src={{atractivo.df}}></ion-icon>
+          <ion-icon slot="end" src={{atractivo.dv}}></ion-icon>
+        </ion-item>
+        <h2>{{atractivo.nombre}}</h2>
+        <p>{{atractivo.direccion}}</p>
+        <ion-note>{{atractivo.telefono}}</ion-note>
+      </ion-label>
+    </ion-item>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+

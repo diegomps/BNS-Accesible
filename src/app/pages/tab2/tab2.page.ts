@@ -10,11 +10,15 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class Tab2Page implements OnInit{
 
   tiposdeusuarios: any[] = new Array<any>();
+  categorias: any[] = new Array<any>();
+
 
   constructor(private db: AngularFirestore) {}
 
   ngOnInit(){
     this.getTiposDeUsuarios();
+    this.getCategorias();
+
   }
 
   getTiposDeUsuarios(){
@@ -23,6 +27,16 @@ export class Tab2Page implements OnInit{
  
       resultado.docs.forEach((item)=>{
           this.tiposdeusuarios.push(item.data());
+      })
+    })
+   }
+
+   getCategorias(){
+    this.categorias.length = 0;
+    this.db.collection('Categorias').get().subscribe((resultado)=>{
+ 
+      resultado.docs.forEach((item)=>{
+          this.categorias.push(item.data());
       })
     })
    }

@@ -1,0 +1,34 @@
+<!-- SKELETON CARGANDO -->
+<ion-grid style="overflow: hidden; width: 100%;" *ngIf="eventos.length == 0">
+  <ion-row>
+    <ion-col>
+      <ion-skeleton-text animated style="width: 100%; height: 200px;"></ion-skeleton-text>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<!-- CARROUSEL DE EVENTOS -->
+<div class="events-slider">
+  <ion-slides [options]="slideOptsEvents" effect="fade">
+    <ion-slide *ngFor="let evento of eventos; let posicion = index" (click)="mostrarEvento(evento.id, posicion)">
+
+      <ion-grid class="ion-no-padding">
+        <ion-row>
+          <ion-col>
+            <img src='{{evento.imgUrl}}'>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item lines="none">
+              <ion-label>{{evento.nombre}}</ion-label>
+              <!-- <ion-button fill="outline" slot="end" (click)="mostrarEvento(evento.id, posicion)">Ver</ion-button> -->
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-slide>
+  </ion-slides>
+</div>

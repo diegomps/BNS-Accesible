@@ -1,16 +1,8 @@
 
-<ion-content>
-  <ion-list>
-    <ion-list-header class="ion-padding">
-      Seleccione el tipo de usuario
-    </ion-list-header>
+<ion-header>
+  <ion-searchbar placeholder="Busque aquí" showCancelButton="focus" animated></ion-searchbar>
+</ion-header>
 
-    <ion-item *ngFor="let user of tiposdeusuarios" detail>
-      <ion-icon slot="start" src={{user.icono}}></ion-icon>
-      <ion-label>
-        <h2 class="ion-padding">{{user.nombre}}</h2>
-      </ion-label>
-    </ion-item>
-  </ion-list>
-  
+<ion-content>
+
 </ion-content>
