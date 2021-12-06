@@ -1,16 +1,27 @@
 .categories{
     overflow: hidden;
+    padding: 5px;
 
     ion-col{
-        border: 1px solid #ccc;
-        margin: 0px;
-        padding: 0px;
 
-        ion-img{
-            width: 150px;
-            height: 150px;
-            padding: 0px;
-            margin: 0px;
+        div{
+            border: 1px solid #ccc;
+            padding: 5px;
+
+            ion-img{
+                width: auto;
+                height: auto;
+                padding: 0px;
+                margin: 0px;
+            }
+    
+            ion-item{
+                font-size: medium;
+            }
+    
+            h4{
+                margin: 0px;
+            }
         }
     }
 }

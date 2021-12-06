@@ -5,11 +5,12 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./pages/tabs/tabs.module').then(m => m.TabsPageModule)
-  },
-  {
-    path: 'mostrar-evento',
-    loadChildren: () => import('./pages/mostrar-evento/mostrar-evento.module').then( m => m.MostrarEventoPageModule)
   }
+  // },
+  // {
+  //   path: 'mostrar-evento',
+  //   loadChildren: () => import('./pages/mostrar-evento/mostrar-evento.module').then( m => m.MostrarEventoPageModule)
+  // }
 ];
 @NgModule({
   imports: [

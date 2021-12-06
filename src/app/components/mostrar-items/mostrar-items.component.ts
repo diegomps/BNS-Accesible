@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ModalController } from '@ionic/angular';
+import { MostrarItemComponent } from '../mostrar-item/mostrar-item.component';
 
 @Component({
   selector: 'app-mostrar-items',
@@ -8,75 +10,61 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 })
 export class MostrarItemsComponent implements OnInit {
   
-  categorias: any[] = new Array<any>();
+
   categoriaSeleccionada: string = "Alojamientos";
 
-  alojamientos: any[] = new Array<any>();
-  atractivos: any[] = new Array<any>();
+  da: string = "/assets/icon/da.svg";
+  df: string = "/assets/icon/df.svg";
+  dv: string = "/assets/icon/dv.svg";
 
-  
+  categorias:   any[] = new Array<any>();
+  tipoCategoria: any[] = new Array<any>();
 
-  constructor(private db: AngularFirestore) { }
+  constructor(private db: AngularFirestore,
+              private modalCtrl: ModalController) { }
 
   ngOnInit() {
     this.getCategorias();
-    this.getAlojamientos();
-    this.getAtractivos();
+    this.consultaDB(this.categoriaSeleccionada);
   }
 
   getCategorias(){
     this.categorias.length = 0;
+
     this.db.collection('Categorias').get().subscribe((resultado)=>{
- 
       resultado.docs.forEach((item)=>{
           this.categorias.push(item.data());
       })
     })
+    
    }
 
   segmentChanged(event: CustomEvent){
     this.categoriaSeleccionada = event.detail.value
+    this.consultaDB(this.categoriaSeleccionada);
    }
 
-  getAlojamientos(){
-    this.alojamientos.length = 0;
-    this.db.collection('Alojamientos').get().subscribe((resultado)=>{
- 
+   consultaDB(path: string){
+    this.tipoCategoria.length = 0;
+
+    this.db.collection(path).get().subscribe((resultado)=>{
       resultado.docs.forEach((item)=>{
-        let alojamiento: any = item.data();
-        if (alojamiento.discapacidadAuditiva==true){
-          alojamiento.da = "/assets/icon/da.svg"
-        }
-        if (alojamiento.discapacidadFisica==true){
-          alojamiento.df = "/assets/icon/df.svg"
-        }
-        if (alojamiento.discapacidadVisual==true){
-          alojamiento.dv = "/assets/icon/dv.svg"
-        }
-          this.alojamientos.push(alojamiento);
+        let tipCat: any = item.data();
+        tipCat.id = item.id;
+        this.tipoCategoria.push(tipCat);
       })
     })
+
    }
 
-   getAtractivos(){
-    this.atractivos.length = 0;
-    this.db.collection('Atractivos').get().subscribe((resultado)=>{
- 
-      resultado.docs.forEach((item)=>{
-        let atractivo: any = item.data();
-        if (atractivo.discapacidadAuditiva==true){
-          atractivo.da = "/assets/icon/da.svg"
-        }
-        if (atractivo.discapacidadFisica==true){
-          atractivo.df = "/assets/icon/df.svg"
-        }
-        if (atractivo.discapacidadVisual==true){
-          atractivo.dv = "/assets/icon/dv.svg"
-        }
-          this.atractivos.push(atractivo);
-      })
-    })
-   }
-
-
+  async mostrarItem(item: any [], cat: string){
+     const modal = await this.modalCtrl.create({
+       component: MostrarItemComponent,
+       componentProps:{
+         item, cat
+       }
+     });
+    modal.present();
+  }
+  
 }
