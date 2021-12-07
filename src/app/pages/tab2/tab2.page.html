@@ -1,8 +1,28 @@
-
+<!-- 
 <ion-header>
   <ion-searchbar placeholder="Busque aquí" showCancelButton="focus" animated></ion-searchbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content>
+<ion-toolbar color="primary">
+  <ion-title>BÑS ACCESIBLE</ion-title>
+</ion-toolbar>
+
+<ion-list>
+  <ion-list-header>
+    Seleccione el tipo de usuario
+  </ion-list-header>
+  <ion-col size="12" *ngFor="let usuario of usuarios">
+    <ion-item detail (click)="gotoTDU(usuario.id)">
+      <ion-icon [src]=usuario.icono slot="start" color="secondary"></ion-icon>
+
+      <ion-label>
+        <h2>{{ usuario.nombre }}</h2>
+        <h3>descripcion 1</h3>
+        <p>descripcion 2</p>
+      </ion-label>
+    </ion-item>
+  </ion-col>
+</ion-list>
 
 </ion-content>

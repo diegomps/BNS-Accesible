@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab2',
@@ -9,37 +10,32 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 export class Tab2Page implements OnInit{
 
-  tiposdeusuarios: any[] = new Array<any>();
-  categorias: any[] = new Array<any>();
 
+  usuarios: any[] = new Array<any>();
 
-  constructor(private db: AngularFirestore) {}
+  constructor(
+    private db: AngularFirestore,
+    private router: Router) {}
 
-  ngOnInit(){
+  ngOnInit(){  
     this.getTiposDeUsuarios();
-    this.getCategorias();
-
   }
 
   getTiposDeUsuarios(){
-    this.tiposdeusuarios.length = 0;
+    this.usuarios.length = 0;
+
     this.db.collection('TiposDeUsuarios').get().subscribe((resultado)=>{
- 
       resultado.docs.forEach((item)=>{
-          this.tiposdeusuarios.push(item.data());
+        let usuario: any = item.data();
+        usuario.id = item.id;
+        this.usuarios.push(usuario);
       })
     })
+  
    }
 
-   getCategorias(){
-    this.categorias.length = 0;
-    this.db.collection('Categorias').get().subscribe((resultado)=>{
- 
-      resultado.docs.forEach((item)=>{
-          this.categorias.push(item.data());
-      })
-    })
-   }
+   gotoTDU(idUser: string){
+    this.router.navigate(['/tipo-de-usuario',idUser])
+  }
    
 }
-

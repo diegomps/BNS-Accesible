@@ -7,12 +7,13 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./mostrar-evento.component.scss'],
 })
 export class MostrarEventoComponent{
+
   @Input() evento: any;
+  
   da: string = "/assets/icon/da.svg";
   df: string = "/assets/icon/df.svg";
   dv: string = "/assets/icon/dv.svg";
 
-  
   constructor( private eventoCtrl: ModalController ) { }
 
   cerrarEvento(){

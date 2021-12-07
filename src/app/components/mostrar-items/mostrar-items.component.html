@@ -19,7 +19,7 @@
 </ion-segment>
 
 <!-- MOSTRAR ITEMS -->
-<ion-grid *ngIf=" categoriaSeleccionada == categoriaSeleccionada " class="categories">
+<ion-grid  class="categories">
   <ion-row>
     <ion-col size="6" size-sm="6" size-md="4" size-lg="3" *ngFor="let categoria of tipoCategoria">
       <div (click)="mostrarItem(categoria, categoriaSeleccionada)">
