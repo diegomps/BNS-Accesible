@@ -16,7 +16,8 @@ export class TipoDeUsuarioPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    if (this.id == "dAutivida") {
+    this.id = this.ar.snapshot.paramMap.get("id");
+    if (this.id == "dAuditiva") {
       this.name = "Discapacidad Auditiva"
     }
     if (this.id == "dFisica") {
@@ -25,7 +26,6 @@ export class TipoDeUsuarioPage implements OnInit {
     if (this.id == "dVisual") {
       this.name = "Discapacidad Visual"
     }
-    this.id = this.ar.snapshot.paramMap.get("id");
   }
 
 }

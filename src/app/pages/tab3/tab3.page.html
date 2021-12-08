@@ -1,2 +1,35 @@
+<ion-content>
+    <ion-toolbar color="primary">
+      <ion-title>BÑS ACCESIBLE</ion-title>
+    </ion-toolbar>
 
-<app-carrousel-eventos></app-carrousel-eventos>
+    <ion-list>
+      <ion-list-header>
+        Favoritos
+      </ion-list-header>
+
+      <ng-container *ngFor="let categoria of result">
+        <h3 class="ion-padding">{{ categoria }}</h3>
+        <ng-container *ngFor="let favorito of favoritos">
+
+        <ion-col size="12" *ngIf="categoria == favorito.categoria" (click)="mostrarItem(favorito, favorito.categoria)">
+          <ion-item>
+              <ion-thumbnail slot="end">
+                  <img [src]=favorito.logo>
+              </ion-thumbnail>    
+            <ion-label>
+              <h2>{{ favorito.nombre }}</h2>
+              <h3>{{favorito.direccion}}</h3>
+              <p>{{ favorito.telefono}}</p>
+            </ion-label>
+          </ion-item>
+        </ion-col>
+
+    </ng-container>
+
+    </ng-container>
+      
+    </ion-list>
+
+    
+    </ion-content>

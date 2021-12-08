@@ -22,7 +22,7 @@
 
 <ion-grid *ngIf=" tipousuario == 'dAuditiva' " class="categories">
   <ion-row>
-    <ng-container *ngFor="let categoria of tipoCategoria" >
+    <ng-container *ngFor="let categoria of tipoCategoria">
       <ion-col *ngIf="categoria.discapacidadAuditiva" size="6" size-sm="6" size-md="4" size-lg="3" >
         <div (click)="mostrarItem(categoria, categoriaSeleccionada)">
           <ion-img src="{{categoria.logo}}"></ion-img>

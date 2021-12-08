@@ -14,6 +14,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 
 import { registerLocaleData } from '@angular/common';
 import localeEsEc from '@angular/common/locales/es-EC'
+import { IonicStorageModule } from '@ionic/storage-angular';
+
 registerLocaleData(localeEsEc, 'es-EC')
 
 @NgModule({
@@ -23,6 +25,7 @@ registerLocaleData(localeEsEc, 'es-EC')
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    IonicStorageModule.forRoot(),
 
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
