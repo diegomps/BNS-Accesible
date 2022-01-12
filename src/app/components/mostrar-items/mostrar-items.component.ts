@@ -39,7 +39,7 @@ export class MostrarItemsComponent implements OnInit {
     
    }
 
-  segmentChanged(event: CustomEvent){
+  segmentChanged(event: any){
     this.categoriaSeleccionada = event.detail.value
     this.consultaDB(this.categoriaSeleccionada);
    }

@@ -1,12 +1,3 @@
-<!-- SKELETON CARGANDO -->
-<ion-grid style="overflow: hidden; position: fixed; width: 100%;" *ngIf="tipoCategoria.length == 0">
-  <ion-row>
-    <ion-col size="6" size-sm="6" size-md="4" size-lg="3" *ngFor="let item of [0,1,2,3,4,5,6,7,8,9]">
-      <ion-skeleton-text animated style="width: 100%; height: 200px;"></ion-skeleton-text>
-    </ion-col>
-  </ion-row>
-</ion-grid>
-
 <!-- CARROUSEL DE CATEGORIAS -->
 <ion-segment (ionChange)="segmentChanged($event)" scrollable mode="md" [value]="categoriaSeleccionada">
   <div *ngFor="let categoria of categorias">
@@ -18,23 +9,37 @@
   </div>
 </ion-segment>
 
-<!-- MOSTRAR ITEMS -->
-<ion-grid  class="categories">
+
+<!-- SKELETON CARGANDO -->
+<ion-grid style="overflow: hidden; position: fixed; width: 100%;" *ngIf="tipoCategoria.length == 0">
   <ion-row>
-    <ion-col size="6" size-sm="6" size-md="4" size-lg="3" *ngFor="let categoria of tipoCategoria">
-      <div (click)="mostrarItem(categoria, categoriaSeleccionada)">
-        <ion-img src="{{categoria.logo}}"></ion-img>
-        <ion-item lines="none">
-          <ion-icon *ngIf="categoria.discapacidadAuditiva" slot="end" [src]=da></ion-icon>
-          <ion-icon *ngIf="categoria.discapacidadFisica"   slot="end" [src]=df></ion-icon>
-          <ion-icon *ngIf="categoria.discapacidadVisual"   slot="end" [src]=dv></ion-icon>
-        </ion-item>
-        <h4>{{categoria.nombre}}</h4>
-        <p>{{categoria.direccion}}</p>
-        <ion-note>{{categoria.telefono}}</ion-note>
-      </div>
+    <ion-col size="6" size-sm="6" size-md="4" size-lg="3" *ngFor="let item of [0,1,2,3,4,5,6,7,8,9]">
+      <ion-skeleton-text animated style="width: 100%; height: 200px;"></ion-skeleton-text>
     </ion-col>
   </ion-row>
 </ion-grid>
 
 
+<!-- MOSTRAR ITEMS -->
+<ion-grid>
+  <ion-row>
+    <ion-col size="6" size-sm="6" size-md="4" size-lg="3" *ngFor="let categoria of tipoCategoria">
+      <div (click)="mostrarItem(categoria, categoriaSeleccionada)">
+        <ion-card>
+          <ion-card-header>
+            <ion-img src="{{categoria.logo}}"></ion-img>
+            <ion-item>
+              <ion-icon *ngIf="categoria.discapacidadAuditiva" slot="end" [src]=da></ion-icon>
+              <ion-icon *ngIf="categoria.discapacidadFisica"   slot="end" [src]=df></ion-icon>
+              <ion-icon *ngIf="categoria.discapacidadVisual"   slot="end" [src]=dv></ion-icon>
+            </ion-item>
+          </ion-card-header>
+          <ion-card-content>
+            <h3>{{categoria.nombre}}</h3>
+            <p>{{categoria.direccion}}</p>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>

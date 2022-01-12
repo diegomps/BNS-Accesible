@@ -26,7 +26,7 @@ export class MostrarItemComponent implements OnInit {
   ngOnInit() {
     this.getImagenes(this.item.id, this.cat);
     this.dataLocal.existeItem( this.item.id )
-    .then( existe => (this.icono = (existe) ? 'star' : 'star-outline') && (this.color = (existe) ? 'secondary' : null ));
+    .then( existe => (this.icono = (existe) ? 'star' : 'star-outline') && (this.color = (existe) ? 'naranja' : null ));
   }
 
   regresar(){
@@ -50,6 +50,6 @@ export class MostrarItemComponent implements OnInit {
   favorito(){
     const existe = this.dataLocal.guardar(this.item, this.cat);
     this.icono = ( existe ) ? 'star' : 'star-outline';
-    this.color = ( existe ) ? 'secondary' : null;
+    this.color = ( existe ) ? 'naranja' : null;
   }
 }

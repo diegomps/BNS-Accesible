@@ -1,13 +1,12 @@
 <ion-content>
-    <ion-toolbar color="primary">
-      <ion-title>BÑS ACCESIBLE</ion-title>
-    </ion-toolbar>
+
+  <app-app-name-header></app-app-name-header>
+
+  <ion-text>
+    <h3>Favoritos</h3>
+  </ion-text>  
 
     <ion-list>
-      <ion-list-header>
-        Favoritos
-      </ion-list-header>
-
       <ng-container *ngFor="let categoria of result">
         <h3 class="ion-padding">{{ categoria }}</h3>
         <ng-container *ngFor="let favorito of favoritos">

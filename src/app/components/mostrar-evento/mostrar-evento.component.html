@@ -27,6 +27,7 @@
       <ion-icon name="reader" slot="start"></ion-icon>
       <h5>DESCRIPCIÓN</h5>
     </ion-item>
+    <br>
     <ion-label>{{evento.descripcion}}</ion-label>
     <hr>
     <hr>
@@ -34,6 +35,7 @@
       <ion-icon name="location" slot="start"></ion-icon>
       <h5>UBICACIÓN</h5>
     </ion-item>
+    <br>
     <ion-label>{{evento.direccion}}</ion-label>
     <hr>
     <hr>
@@ -41,6 +43,7 @@
       <ion-icon name="calendar" slot="start"></ion-icon>
       <h5>FECHA</h5>
     </ion-item>
+    <br>
     <ion-label>{{evento.fechaEvento.toDate() | date:"EEEE, dd 'de' MMMM 'del' yyyy"}}</ion-label>
     <hr>
     <hr>
@@ -48,6 +51,7 @@
       <ion-icon name="time" slot="start"></ion-icon>
       <h5>HORA</h5>
     </ion-item>
+    <br>
     <ion-label>{{evento.fechaEvento.toDate() | date:'h:mm a'}}</ion-label>
   </div>
 

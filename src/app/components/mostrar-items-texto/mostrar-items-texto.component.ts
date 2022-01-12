@@ -41,12 +41,12 @@ export class MostrarItemsTextoComponent implements OnInit {
     })
    }
 
-  segmentChanged(event: CustomEvent){
+  segmentChanged(event: any){
     this.categoriaSeleccionada = event.detail.value
     this.consultaDB(this.categoriaSeleccionada);
    }
 
-   consultaDB(path: string){
+  consultaDB(path: string){
     this.tipoCategoria.length = 0;
 
     this.db.collection(path).get().subscribe((resultado)=>{

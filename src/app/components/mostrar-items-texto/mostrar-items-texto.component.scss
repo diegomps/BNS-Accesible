@@ -1,0 +1,29 @@
+ion-card{
+    padding: 0em;
+    margin: 0.25em;
+    
+    ion-card-header{
+        padding: 0em;
+        margin: 0em;
+
+        ion-item{
+            padding: 0em;
+            position: relative;
+            top: -10px;
+            margin-bottom: 0em;
+            ion-icon{
+                margin: 0em;
+                padding: 0em;
+                height: 50%;
+            }
+        }
+    }
+
+    ion-card-content{
+        height: 6em;
+        h3{
+            font-size: 14pt;
+            color: black;
+        }
+    }
+}
